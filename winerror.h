@@ -1,15 +1,6 @@
-winerror table
+#include "errortable.h"
 
-```cpp
-
-//C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\winerror.h
-
-struct
-{
-    const char* name;
-    unsigned int code;
-    const char* message;
-} winsyserror[] =
+struct error_table winerror[] =
 {
 {"ERROR_SUCCESS", 0, "The operation completed successfully."},
 {"NO_ERROR", 1, "The operation completed successfully."},
@@ -6497,7 +6488,4 @@ struct
  { "WINML_ERR_VALUE_NOTFOUND", 6751, "An attempt was made to bind an unknown input or output." },
  { "WINML_ERR_SIZE_MISMATCH", 6752, "The size of the buffer provided for a bound variable is invalid." }
 };
-
-
-```
 

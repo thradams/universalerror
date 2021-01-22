@@ -1,13 +1,6 @@
-Windows defines for posix errors
+#include "errortable.h"
 
-Header: C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\errno.h
-
-```cpp
-struct {
-  const char* name;
-  int code;
-  const char* message;
-} winposix[]={
+struct  error_table windows_errno []={
 { "EPERM", 1, "Operation not permitted" },
 { "ENOENT", 2, "No such file or directory" },
 { "ESRCH", 3, "No such process" },
@@ -89,5 +82,4 @@ struct {
 { "ETXTBSY", 139, "Unknown error" },
 { "EWOULDBLOCK", 140, "Unknown error" }
 };
-```
 

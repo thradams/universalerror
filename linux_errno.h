@@ -1,12 +1,6 @@
+#include "errortable.h"
 
-```cpp
-//C:\Users\thiago\AppData\Local\Microsoft\Linux\HeaderCache\1.0\-2127121281\usr\include\errno.h
-struct
-{
-    const char* name;
-    int code;
-    const char* message;
-} u[] = {
+struct error_table linux_errno[] = {
 { "EPERM", 1, "Operation not permitted"},
 { "ENOENT",		 2,	"No such file or directory"},
 { "ESRCH",		 3,	"No such process"},
@@ -47,7 +41,7 @@ struct
 { "ENOSYS",		38	, "Invalid system call number"},
 { "ENOTEMPTY",	39	, "Directory not empty"},
 { "ELOOP",		40	, "Too many symbolic links encountered"},
-{ "EWOULDBLOCK",	EAGAIN	, "Operation would block"},
+{ "EWOULDBLOCK",	11 /*EAGAIN*/	, "Operation would block"},
 { "ENOMSG",		42	, "No message of desired type"},
 { "EIDRM",		43	, "Identifier removed"},
 { "ECHRNG",		44	, "Channel number out of range"},
@@ -141,7 +135,4 @@ struct
 { "ERFKILL",		132	, "Operation not possible due to RF-kill"},
 { "EHWPOISON",	133	, "Memory page has hardware error"}
 };
-
-
-```
 
