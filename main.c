@@ -9,6 +9,7 @@
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
+#include "vc\unicode.h"
 
 #define strdup _strdup
 struct mapentry {
@@ -28,6 +29,31 @@ void hashmap_destroy(struct hashmap* pMap);
 int hashmap_set(struct hashmap* pMap, const char* key, struct error_table* pNew);
 struct error_table* hashmap_find(struct hashmap* pMap, const char* key);
 
+void strencode(FILE* f, const char* str)
+{
+    while (*str)
+    {
+
+        switch (*str)
+        {
+            case '"':
+                fprintf(f, "\\\"");
+                break;
+            case '\n':
+                fprintf(f, "\\n");
+                break;
+            case '\\':
+                fprintf(f, "\\\\");
+                break;
+            default:
+                fprintf(f, "%c", *str);
+                break;
+        }
+
+        str++;
+    }
+
+}
 int main()
 {
     struct hashmap map = { .capacity = 5000 };
@@ -42,11 +68,11 @@ int main()
         }
         else
         {
-            //?
+            printf("warning same name '%s' added twice\n", linux_errno[i].name);
         }
     }
 
-    
+
     for (int i = 0; i < ARRAYLEN(windows_errno); i++)
     {
         struct error_table* p = hashmap_find(&map, windows_errno[i].name);
@@ -56,17 +82,19 @@ int main()
         }
         else
         {
-            printf("'%s' already exists ", p->name);
+            //printf("'%s' already exists ", p->name);
             if (p->code != windows_errno[i].code)
             {
-                printf("diferent values linux=%d windows=%d", p->code, windows_errno[i].code);
+
+                printf("diferent values for '%s' linux=%d windows=%d", p->name, p->code, windows_errno[i].code);
             }
             else
             {
-                printf("same value %d", p->code);
+                //ok este eh o mesmo erro do posix com mesmo valor
+                //printf("same value %d", p->name, p->code);
             }
             printf("\n");
-        }        
+        }
     }
 
     for (int i = 0; i < ARRAYLEN(winerror); i++)
@@ -97,9 +125,9 @@ int main()
 
     struct hashmap messagemap = { .capacity = 5000 };
     struct hashmap codemap = { .capacity = 5000 };
-    
+
     fprintf(output, "#include \"errortable.h\"\n"
-                    "struct error_table linux_errno[] = { \n");
+            "struct error_table unicode[] = { \n");
 
 
     for (int i = 0; i < map.capacity; i++)
@@ -109,7 +137,7 @@ int main()
             struct mapentry* entry = map.table[i];
             while (entry)
             {
-                char codestr[20] = {0};
+                char codestr[20] = { 0 };
                 _itoa(entry->p->code, codestr, 10);
 
                 struct error_table* codeentry = hashmap_find(&codemap, codestr);
@@ -120,7 +148,7 @@ int main()
                 else
                 {
                     //foram adicionados dois erros com mesmo codigo
-                    printf("codigo ja existe entre %s %s\n", entry->p->name, codeentry->name);
+                    printf("erro codigo ja existe entre %s %s\n", entry->p->name, codeentry->name);
                 }
 
 
@@ -135,14 +163,19 @@ int main()
                     printf("warning: mensagem igual entre %s %s\n", entry->p->name, msgentry->name);
                 }
 
-                fprintf(output, "{\"%s\", %d, \"%s\"},\n", entry->p->name, entry->p->code, entry->p->message);
+                fprintf(output, "{\"%s\", %d, \"", entry->p->name, entry->p->code);
+                strencode(output, entry->p->message);
+                fprintf(output, "\"},\n");
+
+                
+
                 entry = entry->next;
             }
         }
     }
 
     fprintf(output, "};\n");
-    
+
     fclose(output);
 
     hashmap_destroy(&map);
@@ -180,7 +213,7 @@ void hashmap_remove_all(struct hashmap* pMap)
             {
                 struct mapentry* pentryCurrent = pentry;
 
-                
+
 
                 pentry = pentry->next;
                 free(pentryCurrent->key);
