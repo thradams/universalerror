@@ -119,6 +119,7 @@ int main()
                 }
                 else
                 {
+                    //foram adicionados dois erros com mesmo codigo
                     printf("codigo ja existe entre %s %s\n", entry->p->name, codeentry->name);
                 }
 
@@ -130,7 +131,8 @@ int main()
                 }
                 else
                 {
-                    printf("mensagem igual entre %s %s\n", entry->p->name, msgentry->name);
+                    //foram adicionados dois erros com a mesma mensagem
+                    printf("warning: mensagem igual entre %s %s\n", entry->p->name, msgentry->name);
                 }
 
                 fprintf(output, "{\"%s\", %d, \"%s\"},\n", entry->p->name, entry->p->code, entry->p->message);
