@@ -1,4 +1,6 @@
+
 ```cpp
+//C:\Users\thiago\AppData\Local\Microsoft\Linux\HeaderCache\1.0\-2127121281\usr\include\errno.h
 struct
 {
     const char* name;
