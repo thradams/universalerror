@@ -1,5 +1,12 @@
 
 ```cpp
+struct 
+{
+  const char* name;
+  unsigned int code;
+  const char* message;
+} winsyserror[]=
+{
 {"ERROR_SUCCESS", 0, "The operation completed successfully."},
 {"NO_ERROR", 1, "The operation completed successfully."},
 {"SEC_E_OK", 2, "The operation completed successfully."},
@@ -391,25 +398,14 @@ A real-mode application issued a floating-point instruction and floating-point h
 {"ERROR_BACKUP_CONTROLLER", 404, "This operation is only allowed for the Primary Domain Controller of the domain."},
 {"ERROR_MUTANT_LIMIT_EXCEEDED", 405, "An attempt was made to acquire a mutant such that its maximum count would have been exceeded."},
 {"ERROR_FS_DRIVER_REQUIRED", 406, "A volume has been accessed for which a file system driver is required that has not yet been loaded."},
-{"ERROR_CANNOT_LOAD_REGISTRY_FILE", 407, "{Registry File Failure}
-The registry cannot load the hive (file):
-hs
-or its log or alternate.
-It is corrupt, absent, or not writable."},
-{"ERROR_DEBUG_ATTACH_FAILED", 408, "{Unexpected Failure in DebugActiveProcess}
-An unexpected failure occurred while processing a DebugActiveProcess API request. You may choose OK to terminate the process, or Cancel to ignore the error."},
-{"ERROR_SYSTEM_PROCESS_TERMINATED", 409, "{Fatal System Error}
-The hs system process terminated unexpectedly with a status of 0x"},
-{"ERROR_DATA_NOT_ACCEPTED", 410, "{Data Not Accepted}
-The TDI client could not handle the data received during an indication."},
+{"ERROR_CANNOT_LOAD_REGISTRY_FILE", 407, "{Registry File Failure} The registry cannot load the hive (file): hs or its log or alternate.It is corrupt, absent, or not writable."},
+{"ERROR_DEBUG_ATTACH_FAILED", 408, "{Unexpected Failure in DebugActiveProcess} An unexpected failure occurred while processing a DebugActiveProcess API request. You may choose OK to terminate the process, or Cancel to ignore the error."},
+{"ERROR_SYSTEM_PROCESS_TERMINATED", 409, "{Fatal System Error} The hs system process terminated unexpectedly with a status of 0x"},
+{"ERROR_DATA_NOT_ACCEPTED", 410, "{Data Not Accepted} The TDI client could not handle the data received during an indication."},
 {"ERROR_VDM_HARD_ERROR", 411, "NTVDM encountered a hard error."},
-{"ERROR_DRIVER_CANCEL_TIMEOUT", 412, "{Cancel Timeout}
-The driver hs failed to complete a cancelled I/O request in the allotted time."},
-{"ERROR_REPLY_MESSAGE_MISMATCH", 413, "{Reply Message Mismatch}
-An attempt was made to reply to an LPC message, but the thread specified by the client ID in the message was not waiting on that message."},
-{"ERROR_LOST_WRITEBEHIND_DATA", 414, "{Delayed Write Failed}
-Windows was unable to save all the data for the file hs. The data has been lost.
-This error may be caused by a failure of your computer hardware or network connection. Please try to save this file elsewhere."},
+{"ERROR_DRIVER_CANCEL_TIMEOUT", 412, "{Cancel Timeout} The driver hs failed to complete a cancelled I/O request in the allotted time."},
+{"ERROR_REPLY_MESSAGE_MISMATCH", 413, "{Reply Message Mismatch} An attempt was made to reply to an LPC message, but the thread specified by the client ID in the message was not waiting on that message."},
+{"ERROR_LOST_WRITEBEHIND_DATA", 414, "{Delayed Write Failed} Windows was unable to save all the data for the file hs. The data has been lost. This error may be caused by a failure of your computer hardware or network connection. Please try to save this file elsewhere."},
 {"ERROR_CLIENT_SERVER_PARAMETERS_INVALID", 415, "The parameter(s) passed to the server in the client/server shared memory window were invalid. Too much data may have been put in the shared memory window."},
 {"ERROR_NOT_TINY_STREAM", 416, "The stream is not a tiny stream."},
 {"ERROR_STACK_OVERFLOW_READ", 417, "The request must be handled by the stack overflow code."},
@@ -419,19 +415,15 @@ This error may be caused by a failure of your computer hardware or network conne
 {"ERROR_MARSHALL_OVERFLOW", 421, "The user/kernel marshalling buffer has overflowed."},
 {"ERROR_INVALID_VARIANT", 422, "The supplied variant structure contains invalid data."},
 {"ERROR_BAD_COMPRESSION_BUFFER", 423, "The specified buffer contains ill-formed data."},
-{"ERROR_AUDIT_FAILED", 424, "{Audit Failed}
-An attempt to generate a security audit failed."},
+{"ERROR_AUDIT_FAILED", 424, "{Audit Failed} An attempt to generate a security audit failed."},
 {"ERROR_TIMER_RESOLUTION_NOT_SET", 425, "The timer resolution was not previously set by the current process."},
 {"ERROR_INSUFFICIENT_LOGON_INFO", 426, "There is insufficient account information to log you on."},
 {"ERROR_IP_ADDRESS_CONFLICT1", 429, "There is an IP address conflict with another system on the network"},
 {"ERROR_IP_ADDRESS_CONFLICT2", 430, "There is an IP address conflict with another system on the network"},
-{"ERROR_REGISTRY_QUOTA_LIMIT", 431, "{Low On Registry Space}
-The system has reached the maximum size allowed for the system part of the registry. Additional storage requests will be ignored."},
+{"ERROR_REGISTRY_QUOTA_LIMIT", 431, "{Low On Registry Space} The system has reached the maximum size allowed for the system part of the registry. Additional storage requests will be ignored."},
 {"ERROR_NO_CALLBACK_ACTIVE", 432, "A callback return system service cannot be executed when no callback is active."},
-{"ERROR_PWD_TOO_SHORT", 433, "The password provided is too short to meet the policy of your user account.
-Please choose a longer password."},
-{"ERROR_PWD_HISTORY_CONFLICT", 435, "You have attempted to change your password to one that you have used in the past.
-The policy of your user account does not allow this. Please select a password that you have not previously used."},
+{"ERROR_PWD_TOO_SHORT", 433, "The password provided is too short to meet the policy of your user account. Please choose a longer password."},
+{"ERROR_PWD_HISTORY_CONFLICT", 435, "You have attempted to change your password to one that you have used in the past. The policy of your user account does not allow this. Please select a password that you have not previously used."},
 {"ERROR_UNSUPPORTED_COMPRESSION", 436, "The specified compression format is unsupported."},
 {"ERROR_INVALID_HW_PROFILE", 437, "The specified hardware profile configuration is invalid."},
 {"ERROR_INVALID_PLUGPLAY_DEVICE_PATH", 438, "The specified Plug and Play registry device path is invalid."},
@@ -443,10 +435,8 @@ The application failed to initialize because the window station is shutting down
 {"ERROR_RANGE_LIST_CONFLICT", 445, "The range could not be added to the range list because of a conflict."},
 {"ERROR_SERVER_SID_MISMATCH", 446, "The server process is running under a SID different than that required by client."},
 {"ERROR_CANT_ENABLE_DENY_ONLY", 447, "A group marked use for deny only cannot be enabled."},
-{"ERROR_FLOAT_MULTIPLE_FAULTS", 448, "{EXCEPTION}
-Multiple floating point faults."},
-{"ERROR_FLOAT_MULTIPLE_TRAPS", 449, "{EXCEPTION}
-Multiple floating point traps."},
+{"ERROR_FLOAT_MULTIPLE_FAULTS", 448, "{EXCEPTION} Multiple floating point faults."},
+{"ERROR_FLOAT_MULTIPLE_TRAPS", 449, "{EXCEPTION} Multiple floating point traps."},
 {"ERROR_NOINTERFACE", 450, "The requested interface is not supported."},
 {"ERROR_DRIVER_FAILED_SLEEP", 451, "{System Standby Failed}
 The driver hs does not support standby mode. Updating this driver may allow the system to go to standby mode."},
@@ -454,10 +444,7 @@ The driver hs does not support standby mode. Updating this driver may allow the 
 Your system is low on virtual memory. Windows is increasing the size of your virtual memory paging file.
 During this process, memory requests for some applications may be denied. For more information, see Help."},
 {"ERROR_PNP_RESTART_ENUMERATION", 454, "A device was removed so enumeration must be restarted."},
-{"ERROR_SYSTEM_IMAGE_BAD_SIGNATURE", 455, "{Fatal System Error}
-The system image s is not properly signed.
-The file has been replaced with the signed file.
-The system has been shut down."},
+{"ERROR_SYSTEM_IMAGE_BAD_SIGNATURE", 455, "{Fatal System Error} The system image s is not properly signed. The file has been replaced with the signed file. The system has been shut down."},
 {"ERROR_PNP_REBOOT_REQUIRED", 456, "Device will not start without a reboot."},
 {"ERROR_INSUFFICIENT_POWER", 457, "There is not enough power to complete the requested operation."},
 {"ERROR_MULTIPLE_FAULT_VIOLATION", 458, "ERROR_MULTIPLE_FAULT_VIOLATION"},
@@ -467,8 +454,7 @@ The system has been shut down."},
 {"ERROR_RANGE_NOT_FOUND", 462, "The specified range could not be found in the range list."},
 {"ERROR_NOT_SAFE_MODE_DRIVER", 463, "The driver was not loaded because the system is booting into safe mode."},
 {"ERROR_FAILED_DRIVER_ENTRY", 464, "The driver was not loaded because it failed its initialization call."},
-{"ERROR_DEVICE_ENUMERATION_ERROR", 465, "The "hs" encountered an error while applying power or reading the device configuration.
-This may be caused by a failure of your hardware or by a poor connection."},
+{"ERROR_DEVICE_ENUMERATION_ERROR", 465, "The "hs" encountered an error while applying power or reading the device configuration. This may be caused by a failure of your hardware or by a poor connection."},
 {"ERROR_MOUNT_POINT_NOT_RESOLVED", 466, "The create operation failed because the name contained at least one mount point which resolves to a volume to which the specified device object is not attached."},
 {"ERROR_INVALID_DEVICE_OBJECT_PARAMETER", 467, "The device object parameter is either not a valid device object or is not attached to the volume specified by the file name."},
 {"ERROR_MCA_OCCURED", 468, "A Machine Check Error has occurred. Please check the system eventlog for additional information."},
@@ -499,10 +485,7 @@ The media may have changed."},
 {"ERROR_LONGJUMP", 490, "A long jump has been executed."},
 {"ERROR_PLUGPLAY_QUERY_VETOED", 491, "The Plug and Play query operation was not successful."},
 {"ERROR_UNWIND_CONSOLIDATE", 492, "A frame consolidation has been executed."},
-{"ERROR_REGISTRY_HIVE_RECOVERED", 493, "{Registry Hive Recovered}
-Registry hive (file):
-hs
-was corrupted and it has been recovered. Some data might have been lost."},
+{"ERROR_REGISTRY_HIVE_RECOVERED", 493, "{Registry Hive Recovered} Registry hive (file): hs was corrupted and it has been recovered. Some data might have been lost."},
 {"ERROR_DLL_MIGHT_BE_INSECURE", 494, "The application is attempting to run executable code from the module hs. This may be insecure. An alternative, hs, is available. Should the application use the secure module hs?"},
 {"ERROR_DLL_MIGHT_BE_INCOMPATIBLE", 495, "The application is loading executable code from the module hs. This is secure, but may be incompatible with previous releases of the operating system. An alternative, hs, is available. Should the application use the secure module hs?"},
 {"ERROR_DBG_EXCEPTION_NOT_HANDLED", 496, "Debugger did not handle the exception."},
@@ -541,17 +524,13 @@ The TDI indication has completed successfully."},
 {"ERROR_EVENT_PENDING", 519, "{TDI Event Pending}
 The TDI indication has entered the pending state."},
 {"ERROR_CHECKING_FILE_SYSTEM", 520, "Checking file system on wZ"},
-{"ERROR_FATAL_APP_EXIT", 521, "{Fatal Application Exit}
-hs"},
+{"ERROR_FATAL_APP_EXIT", 521, "{Fatal Application Exit} hs"},
 {"ERROR_PREDEFINED_HANDLE", 522, "The specified registry key is referenced by a predefined handle."},
-{"ERROR_WAS_UNLOCKED", 523, "{Page Unlocked}
-The page protection of a locked page was changed to 'No Access' and the page was unlocked from memory and from the process."},
+{"ERROR_WAS_UNLOCKED", 523, "{Page Unlocked} The page protection of a locked page was changed to 'No Access' and the page was unlocked from memory and from the process."},
 {"ERROR_SERVICE_NOTIFICATION", 524, "hs"},
-{"ERROR_WAS_LOCKED", 525, "{Page Locked}
-One of the pages to lock was already locked."},
+{"ERROR_WAS_LOCKED", 525, "{Page Locked} One of the pages to lock was already locked."},
 {"ERROR_ALREADY_WIN32", 527, "ERROR_ALREADY_WIN32"},
-{"ERROR_IMAGE_MACHINE_TYPE_MISMATCH_EXE", 528, "{Machine Type Mismatch}
-The image file hs is valid, but is for a machine type other than the current machine."},
+{"ERROR_IMAGE_MACHINE_TYPE_MISMATCH_EXE", 528, "{Machine Type Mismatch} The image file hs is valid, but is for a machine type other than the current machine."},
 {"ERROR_NO_YIELD_PERFORMED", 529, "A yield execution was performed and no thread was available to run."},
 {"ERROR_TIMER_RESUME_IGNORED", 530, "The resumable flag to a timer API was ignored."},
 {"ERROR_ARBITRATION_UNHANDLED", 531, "The arbiter has deferred arbitration of these resources to its parent"},
