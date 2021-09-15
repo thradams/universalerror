@@ -6608,4 +6608,7 @@ struct error_table unicode[] = {
 {"WSAENOTEMPTY", 2547, "Cannot remove a directory that is not empty."},
 {"WS_E_SERVER_REQUIRES_DIGEST_AUTH", 5389, "The remote endpoint requires HTTP authentication scheme 'digest'."},
 {"FVE_E_POLICY_PASSPHRASE_NOT_ALLOWED", 5182, "Group Policy settings do not permit the creation of a password."},
-{"ERROR_INVALID_VERIFY_SWITCH", 88, "The verify-on
+{"ERROR_INVALID_VERIFY_SWITCH", 88, "The verify-on-write switch parameter value is not correct."},
+{"CERTSRV_E_TEMPLATE_DENIED", 4057, "The permissions on the certificate template do not allow the current user to enroll for this type of certificate."},
+{"E_INVALID_PROTOCOL_FORMAT", 6439, "Invalid data format for the specific protocol operation."},
+};
